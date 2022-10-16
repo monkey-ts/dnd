@@ -9,7 +9,7 @@ export default function NavLinks() {
   }
   
   return (
-    <div>
+    <div className="flex justify-end">
       {showLinks()}
     </div>
   )
