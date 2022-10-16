@@ -33,8 +33,8 @@ export default function Dice(config: DiceConfig) {
   };
 
   const renderRoll = () => {
-    if (roll === -1) return;
-    if (getTitle() !== activeDie) return;
+    if (roll === -1 && !effect) return;
+    if (getTitle() !== activeDie && !effect) return;
     return <p className="mx-4 lg:my-2 lg:mx-0">You rolled {roll}</p>;
   };
 
