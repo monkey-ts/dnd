@@ -1,7 +1,9 @@
-export default function NavLink() {
+import Link from "next/link";
+
+export default function NavLink({ link }: { link: any }) {
   return (
-    <div>
-      Link
-    </div>
-  )
+    <Link href={link.href}>
+      <a>{link.title}</a>
+    </Link>
+  );
 }
