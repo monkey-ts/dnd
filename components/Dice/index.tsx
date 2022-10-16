@@ -9,6 +9,7 @@ type DiceConfig = {
 
 export default function Dice(config: DiceConfig) {
   const [roll, setRoll] = useState<number>(-1);
+  const [effect, setEffect] = useState<boolean>(false);
   const [activeDie, setActiveDie] = config.dieState;
 
   const getAltText = (): string => {
@@ -23,8 +24,12 @@ export default function Dice(config: DiceConfig) {
     event.preventDefault();
 
     const rollRNG = Math.floor(Math.random() * config.side) + 1;
+    setEffect(true);
     setRoll(rollRNG);
     setActiveDie(getTitle());
+    setTimeout(() => {
+      setEffect(false);
+    }, 2000)
   };
 
   const renderRoll = () => {
@@ -44,7 +49,7 @@ export default function Dice(config: DiceConfig) {
         width={64}
         alt={getAltText()}
         title={getTitle()}
-        className="select-none"
+        className={`select-none ${effect && "animate-spin"}`}
       />
       {renderRoll()}
     </div>
